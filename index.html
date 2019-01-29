@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>TinderBorg</title>
+</head>
+<body>
+<header>
+    <div class="title">
+        <img class="title__img" src="img/tinder.svg" alt="flame">
+        <h1 class="title__h1">Meet a 'Borg</h1>
+        <span class="title__span">Ça va pécho chez les robots 🤖🍆🍑</span>
+    </div>
+</header>
+<main id="robots">
+    <div class="blurb">
+        <h2 class="blurb__h2">Faites votre choix</h2>
+        <div class="blurb__selection">
+            Il y a <span class="blurb__span blue">hommes</span> et <span class="blurb__span pink">femmes</span> !
+        </div>
+        <div class="blurb__div text">
+            Robot ipsum Picoist encephaloform cortropic Filclinic Nippoploid kilolytic zoate. Vesicoity levoparous Egyptococcus stepsepalous stenoales sexuoling ochllyze xeraceae tarsorrhea taxthymia. Cytococcus cheirify gynaecoetic tristomy triboness bathyac conplastic siderogenesis ophioatory egenous. Myary cobaltofuge orphobe pneumonform Angloplex thalassoodont stethometric. Pathoholic newance poikilocline technographer desderma cuprless anthrostat hexgon cyanoicide. Pneumonozyme dendrism exbisect methylphage iridicoable hemoscope anthropomere.
+        </div>
+        <div class="blurb__btn-ctnr">
+            <div class="blurb__btn grey" @click="setFilter('all')" data-filter="All">Afficher tout le monde</div>
+            <div class="blurb__btn blue" @click="setFilter('Male')" data-filter="Male">Afficher tous les hommes</div>
+            <div class="blurb__btn pink" @click="setFilter('Female')" data-filter="Female">Afficher toutes les femmes</div>
+        </div>
+    </div>
+    <section class="robots">
+            <div v-for="robot in robots" class="robot" :title="robot.first_name+' '+robot.last_name" v-if="filter==robot.gender || filter=='all'">
+                <div class="robot__name">
+                    {{robot.first_name}} <strong>{{robot.last_name}}</strong>
+                </div>
+                <div class="robot__data" :class="robot.gender">
+                    <div class="robot__data__type">
+                        <strong>type</strong> : {{robot.type}}
+                    </div>
+                    <img :src="robot.portrait" :alt="robot.first_name+''+robot.last_name">
+                    <div class="robot__data__language">
+                        <strong>Langue parlée</strong> : <br>
+                        {{robot.language}}
+                    </div>
+                    <div class="robot__descr">
+                        {{robot.description}}
+                    </div>
+                </div>
+            </div>
+    </section>
+</main>   
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/request.js"></script>
+<!-- <script src="js/main.js"></script> -->
+
+<!-- http://cepegra-labs.be/webdesign/2018/cours/js/meet-a-borg/index.html -->
